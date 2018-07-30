@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form th:action="@{/products/find}" method="get">
+            Name: 
+            <input type="text" name="name">
+            <input type="submit" value="Search">
+        </form>
+        <hr>
+        <a th:href="@{/products/new}">New Product</a>
+        
+        <table th:if="${products != null}">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>[]</td>
+            </tr>
+            <tr th:each="item: ${products}">
+                <td th:text="${item.id}">ID</td>
+                <td th:text="${item.name}">ID</td>
+                <td th:text="${item.quantity}">ID</td>
+                <td th:text="${item.price}">ID</td>
+                <td>
+                    <a th:href="@{'/products/view/' + ${item.id}}">View </a>
+                    <a th:href="@{'/products/edit/' + ${item.id}}">Edit </a>
+                    <a th:href="@{'/products/delete/' + ${item.id}}">Delete </a>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

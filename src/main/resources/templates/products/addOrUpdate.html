@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" 
+              href="/webjars/bootstrap/4.1.0/css/bootstrap.css">
+<!--        <link rel="stylesheet"
+              href="/webjars/font-awesome/4.7.0/on-server/css/font-awesome.css">-->
+        <link rel="stylesheet"
+              href="/webjars/font-awesome/5.0.10/web-fonts-with-css/css/fontawesome-all.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+            <div class="col-3">This is a testing</div>
+            <div class="col-7">
+                This is a tesitng 2
+                <span class="fa fa-home">Home</span>
+                <span class="fa fa-arrow-circle-left"></span>
+                <span class="fa fa-address-book"></span>
+            </div>
+            </div>
+        </div>
+        
+        <h1>Add or Update Product</h1>
+        <form th:action="@{/products/saveOrUpdate}" method="post"
+              th:object="${product}">
+            <input type="hidden" th:field="*{id}" th:value="${product.id}">
+            Name: <input type="text" th:field="*{name}"><br>
+            <ul>
+                <li th:errors="*{name}">error</li>
+            </ul>
+            Price: <input type="text" th:field="*{price}">
+            <div th:errors="*{price}"></div>
+            <br>
+            Quantity: <input type="text" th:field="*{quantity}">
+            <div th:errors="*{quantity}"></div>
+            <br>
+<!--            <input type="submit" value="Add">-->
+<input type="submit" th:value="${product.id}!= null?'Update': 'Add'">
+        </form>
+        <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        
+    </body>
+</html>

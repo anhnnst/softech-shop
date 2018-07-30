@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>The Product INformation</h3>
+        <hr>
+        <table>
+            <tr>
+                <td>ID:</td>
+                <td th:text="${product.id}"></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td th:text="${product.name}"></td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td th:text="${product.quantity}"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td th:text="${#numbers.formatDecimal(product.price, 
+                    0, 'COMMA', 1, 'POINT')}"></td>
+            </tr>
+        </table>
+        <hr>
+        <a th:href="@{/products/find}">List all products</a>
+    </body>
+</html>
